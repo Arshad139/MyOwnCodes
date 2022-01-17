@@ -1,0 +1,33 @@
+// Recursive C++ program to reverse an array
+// Time Complexity of O(n)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void reverseArray(int a[],int s,int e){
+  if(s>e) return;
+  int temp=a[s];
+  a[s]=a[e];
+  a[e]=temp;
+  reverseArray(a,s+1,e-1);
+}
+
+/* Driver function to test above functions */
+int main()
+{
+    int arr[] = {1, 2, 3, 4, 5, 6};
+     
+    // To print original array
+    printArray(arr, 6);
+     
+    // Function calling
+    rvereseArray(arr, 0, 5);
+     
+    cout << "Reversed array is" << endl;
+     
+    // To print the Reversed array
+    printArray(arr, 6);
+     
+    return 0;
+}
+
