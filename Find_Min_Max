@@ -28,6 +28,41 @@ Pair getMinMax(int a[],int n){
  }
  return ans;
 }
+
+//Finding Min & Max by Divide & conquer
+Pair Rec(int a[],int low,int high){
+    struct Pair ans;
+    if(low==high){
+        ans.min=a[low];
+        ans.max=a[low];
+        return ans;
+    }
+    if(high-low==1) //Only 2 elements are present
+    {
+        if(a[low]>a[high]){
+           ans.max=a[low];
+           ans.min=a[high];
+         }
+        else{
+             ans.min=a[low];
+             ans.max=a[high];
+         }
+        return ans;
+    }
+    //If there are more than 2 elements
+    int mid=low+(high-low)/2;
+    struct Pair leftPart=Rec(a,low,mid);
+    struct Pair RightPart=Rec(a,mid+1,high);
+    if(leftPart.min<RightPart.min){
+        ans.min=leftPart.min;
+    }
+    else ans.min=RightPart.min;
+    if(leftPart.max>RightPart.max){
+        ans.max=leftPart.max;
+    }
+    else ans.max=RightPart.max;
+    return ans;
+}
 // Driver code 
 int main()
 {
@@ -35,8 +70,9 @@ int main()
                   1, 330, 3000 };
     int arr_size = 6;
     
-    struct Pair minmax = getMinMax(arr, arr_size);
+  //fn call 1  struct Pair minmax = getMinMax(arr, arr_size);
     
+  //fn call 2  struct Pair minmax = Rec(arr,0, arr_size-1);
     cout << "Minimum element is " 
          << minmax.min << endl;
     cout << "Maximum element is " 
