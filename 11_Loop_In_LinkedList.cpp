@@ -37,6 +37,25 @@ Node *removeTheLoop(Node* head){
     return head;
 }
 *************************************************/
+#include<unordered_map>
+Node *removeLoop(Node *head)
+{
+    // Write your code here.
+    if (head==NULL) return head;
+    unordered_map<Node*,int> H;
+    Node* temp=head;
+    Node* prev=NULL;
+    while(temp!=NULL){
+        if(H[temp]>0) {
+            prev->next=NULL; return head;
+        }
+        prev=temp;
+        H[temp]=1;
+        temp=temp->next;
+    }
+    return head;
+}
+//Above is hash map technique
 Node* findFloyedLoop(Node *head){
     if(head==NULL) return NULL;
     Node* slow=head;
