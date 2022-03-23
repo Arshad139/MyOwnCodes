@@ -55,3 +55,6 @@ Node * uniqueSortedList(Node * head) {
     //cout<<endl<<"pos="<<pos<<endl;
     return head;
 }
+//--------The above first approach solved 90 percent of the test cases--------------------------------------
+
+//--------Trying an optimised approach for the above first approach.
