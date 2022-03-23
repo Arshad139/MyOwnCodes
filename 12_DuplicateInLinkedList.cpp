@@ -32,7 +32,7 @@ Node * del_At_Pos(Node* &head, int pos)
   //  cout<<"deleted at pos-"<<cnt<<"  ";
     return head;
 }
-Node * uniqueSortedList(Node * head) {
+Node * uniqueUnSortedList(Node * head) {
     // Write your code here.
     if(head==NULL || head->next==NULL) return head;
     Node* temp=head;int pos=0;
@@ -58,3 +58,41 @@ Node * uniqueSortedList(Node * head) {
 //--------The above first approach solved 90 percent of the test cases--------------------------------------
 
 //--------Trying an optimised approach for the above first approach.
+Node *removeDuplicates(Node *head)
+{
+       if(head==NULL || head->next==NULL) return head;
+    Node* temp=head;
+    Node* prev=NULL;
+    unordered_set<int> s
+    
+    while(temp!=NULL){
+       
+        if (s.count(temp->data)) prev->next=temp->next;
+       
+        else  {
+        s.emplace(temp->data);
+        prev=temp;
+        }
+        
+       temp=temp->next;
+    }
+    
+    return head;
+}
+//--------The following is the approach for sorted linked list to remove the duplicates
+
+Node * uniqueSortedList(Node * head) {
+   if (head==NULL) return head;
+    
+   Node* curr=head;
+   while(){
+        if(curr->data==curr->next->data){
+            Node* dup=curr->next;
+            curr->next=curr->next->next;
+            delete dup;
+        }
+       else curr=curr->next;
+   }
+    return head;
+}
+
