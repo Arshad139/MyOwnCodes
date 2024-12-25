@@ -12,6 +12,40 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// ANother similar problem but we need answers for only the ones that were asked but not all the elements
+// 496. Next Greater Element I LC
+// https://leetcode.com/problems/next-greater-element-i/description/
+
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        stack<int> stack;
+        int n = nums2.size();
+        unordered_map<int, int> hash;
+
+        int m = nums1.size();
+        vector<int> ans;
+        
+        for (int i = n - 1; i >= 0; i--) {
+            while (!stack.empty() && stack.top() <= nums2[i]) {
+                stack.pop();
+            }
+
+            if (stack.empty()) {
+                hash[nums2[i]] = -1;
+            } else
+                hash[nums2[i]] = stack.top();
+
+            stack.push(nums2[i]);
+        }
+        for (int i = 0; i < m; i++) {
+            ans.push_back(hash[nums1[i]]);
+        }
+
+        return ans;
+    }
+};
+
 
 // } Driver Code Ends
 class Solution
