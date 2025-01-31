@@ -3,7 +3,11 @@ class Solution {
 public:
     void nextPermutation(vector<int>& nums) {
         int n=nums.size();
-        // Find the breaking point, has a peak, when reading from the end
+        // Find the breaking point, has a peak next to it, when reading from the end
+        
+        // And why do we have to do so, the next permutation has a common prefix with the current vlaue, and we would need to understand what would be that prefix, so that
+        // we can rearrange (in a specific way) the rest of the numbers to attain the immediate permutation. the first element next to this common prefix, should have 
+        // atleast one number that is greater than it, so that re arrangement would result in the generation of a higher value. 
         int breakingPoint = -1;
         for(int i = n-2;i>=0;i--){
             // Starting from the penultimate number to check if it less than its element on its right 
