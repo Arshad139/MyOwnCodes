@@ -37,7 +37,12 @@ If arr[current] = 0 - In this case, we need to push the element towards the fron
 If arr[current] = 1 - In this case, we will just increase the current by 1, since we are only concerned with push 0s to the front and 2s to the end of the array.
 If arr[current] = 2 - In this case, we need to push the element towards the end of the array. Again, to do this, we’ll just swap arr[current] and arr[twoPos]. We will decrease twoPos by 1. However, in this case, we will not increase the current by 1.
 What will be the condition that must be satisfied so that our loop can end? You might think that it’s when current reaches the end of the array but that’s not the case here. Let’s see why. Can you see what exactly the two pointers, zeroPos and twoPos are doing? As we go through the array, every element before zeroPos is a 0 and every element after twoPos is a 2. Also, every element after zeroPos but before the current is a 1. Therefore, all these elements are ‘sorted’. The element that remains to be sorted is the ones that lie between the indices current and twoPos. Therefore our loop will terminate when the current reaches the value of twoPos.
-Now, let’s understand why we can’t increase the value of current when arr[current] = 2. When we swap arr[current] with arr[twoPos], we don’t know what value was initially at index twoPos (before the swap happened), it could be any of the values 0, 1, or 2. So, we can’t increase the value of current without checking what value was swapped with twoPos. We didn’t have to worry about this in the case where we were swapping arr[current] with arr[zeroPos] because then we would always be swapping 0 and 1.
+Now, let’s understand why we can’t increase the value of current when arr[current] = 2. 
+When we swap arr[current] with arr[twoPos], we don’t know what value was initially at index twoPos (before the swap happened)
+, it could be any of the values 0, 1, or 2. So, we can’t increase the value of current without checking what value was swapped with twoPos.
+We didn’t have to worry about this in the case where we were swapping arr[current] with arr[zeroPos] because then we would always be swapping 0 and 1.
+This is primarily because the number coming from the right (or two Posistion is unvisted yet in your iteration)
+
 Time Complexity
 O(N), where ‘N’ is the size of the array.
 
