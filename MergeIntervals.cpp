@@ -36,4 +36,21 @@ public:
 
         return ans;
     }
+The below code is when you tried to do it yourself, after a few weeks.
+ vector<vector<int>> merge(vector<vector<int>>& intervals) {
+        sort(intervals.begin(), intervals.end());
+        vector<vector<int>> ans;
+        int n = intervals.size();
+        ans.push_back(intervals[0]);
+        int ans_index = 0;
+        for(int i=1; i<n; i++){
+            if(intervals[i][0] <= ans[ans_index][1]){
+                ans[ans_index][1] = max(intervals[i][1], ans[ans_index][1]);
+            } else{
+                ans.push_back(intervals[i]);
+                ans_index++;
+            }
+        }
+        return ans;
+    }
 };
